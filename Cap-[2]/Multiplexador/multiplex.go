@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"html"
+
+	"github.com/Lucas96Sousa/Golang/html"
 )
 
 /*
@@ -28,9 +29,8 @@ func juntar(entrada1, entrada2 <-chan string) <-chan string {
 
 func main() {
 	c := juntar(
-		html.Titulo("https://www.amazon.com.br", "www.uol.com.br"),
-
-		html.Titulo("https://www.globo.com", "www.terra.com.br"),
+		html.Titulo("https://www.amazon.com.br", "https://www.globo.com"),
+		html.Titulo("https://www.globo.com", "https://www.google.com.br"),
 	)
 
 	fmt.Println(<-c, "|", <-c)
