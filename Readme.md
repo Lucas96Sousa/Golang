@@ -12,6 +12,5 @@
 - [Golang with go.mod](https://github.com/Lucas96Sousa/Golang/tree/main/golang_course)
 
 ## :computer: Start project
-- Execute npm install
-- Change .env with your github credentials (personal key)
-- Execute npm run dev to start application.
+- If your start with gomodule off, need install modules: go get -u 
+- A second folder in progress
