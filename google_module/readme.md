@@ -1,1 +1,2 @@
-<p align="left">This folder is make with export=GO111MODULE=off</p>
+## Execute golang archives with go111modules=off
+- export GO111MODULE=off in zshrc or bashrc
