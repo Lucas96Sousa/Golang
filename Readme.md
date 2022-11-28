@@ -7,10 +7,9 @@
 
 ## :rocket: Courses
 
-Folders to have go execs
-[a relative link]With GO111MODOULE=off(google_module/readme.md)
-- 
-- [Octokit](https://github.com/octokit)
+- [With GO111MODOULE=off](https://github.com/Lucas96Sousa/Golang/tree/main/google_module)
+
+- [Golang with go.mod](https://github.com/Lucas96Sousa/Golang/tree/main/golang_course)
 
 ## :computer: Start project
 - Execute npm install
