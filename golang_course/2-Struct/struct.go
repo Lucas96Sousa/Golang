@@ -6,6 +6,12 @@ import "fmt"
 type user struct {
   nome string
   idade uint8
+  endereco endereco
+}
+
+type endereco struct {
+  logradouro string 
+  numero uint8
 }
 
 func main() {
@@ -16,5 +22,9 @@ func main() {
   u.idade=21
   fmt.Println(u)
 
+  enderecoExemplo := endereco{"Rua xpto", 1}
 
-}
+  user2 := user{"Davi", 21, enderecoExemplo}
+  fmt.Println(user2)
+
+  }
