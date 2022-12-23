@@ -4,7 +4,7 @@ import "strings"
 
 // TipoEndereco verifica se um endereço valido tem um tipo válido e o retorna
 func TipoEndereco(endereco string) string {
-	tiposValidos := []string{"rua", "avenida", "estrada", "rodovia"}
+	tiposValidos := []string{"rua", "avenida", "estrada", "rodovia", "alameda"}
 
 	enderecoEmLetraMinuscula := strings.ToLower(endereco)
 	primeiraPalavraDoEndereco := strings.Split(enderecoEmLetraMinuscula, " ")[0]
