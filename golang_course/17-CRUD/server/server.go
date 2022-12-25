@@ -56,3 +56,38 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
     w.WriteHeader(http.StatusCreated)
     w.Write([]byte(fmt.Sprintf("User created!!! ID: %d", idInsert)))
 }
+
+
+// FindUser search all users 
+func FindUser(w http.ResponseWriter, r *http.Request) {
+  db, err := db.Conect()
+    if err != nil {
+      w.Write([]byte("Failure to connect database"))
+      return
+    }
+    defer db.Close()
+  
+  row, erro := db.Query("select * from users")
+    if err != nil {
+      w.Write([]byte("Error to find users"))
+      return
+  }
+  defer row.Close()
+
+  var users []user
+
+  for row.Next() {
+    var user user
+
+    if err != row.Scan(&user.ID, &user.Name, &user.Email); err != nil {
+      w.Write([]byte("Erro to scan user"))
+      return
+
+    }
+    users = append(users, user)
+  }
+
+  w.WriteHeader(http.StatusOK)
+}
+
+func FindUserById(w http.ResponseWriter, r *http.Request) {}
