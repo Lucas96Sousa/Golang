@@ -5,7 +5,7 @@ name: Go
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "devbook" ]
 jobs:
   run_code_checks:
     runs-on: ubuntu-latest
