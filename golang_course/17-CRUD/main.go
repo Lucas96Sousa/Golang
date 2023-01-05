@@ -14,8 +14,8 @@ func main() {
 
 	router.HandleFunc("/users", server.CreateUser).Methods(http.MethodPost)
   router.HandleFunc("/users", server.FindUser).Methods(http.MethodGet)
-
   router.HandleFunc("/users/{id}", server.FindUserById).Methods(http.MethodGet)
+  router.HandleFunc("/users/{id}", server.UpdateUser).Methods(http.MethodPut)
 
 	fmt.Println("http://localhost:5000")
 	log.Fatal(http.ListenAndServe(":5000", router))
