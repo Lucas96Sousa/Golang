@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-  fmt.Println("Starting API ---> http://localhost:5000")
+	fmt.Println("Starting API ---> http://localhost:5000")
 
-  r := router.Routes()
-  log.Fatal(http.ListenAndServe(":5000", r))
+	r := router.Routes()
+	log.Fatal(http.ListenAndServe(":5000", r))
 }
