@@ -5,7 +5,7 @@ name: API DevBook
 
 on:
   push:
-    branches: [ "devbook" ]
+    branches: "devbook" 
 jobs:
   run_code_checks:
     runs-on: ubuntu-latest
