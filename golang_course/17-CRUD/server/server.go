@@ -60,14 +60,14 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 // FindUser search all users 
 func FindUser(w http.ResponseWriter, r *http.Request) {
-  db, err := db.Conect()
+  db, err := db.Connect()
     if err != nil {
       w.Write([]byte("Failure to connect database"))
       return
     }
     defer db.Close()
   
-  row, erro := db.Query("select * from users")
+  row, err := db.Query("select * from users")
     if err != nil {
       w.Write([]byte("Error to find users"))
       return
@@ -79,7 +79,7 @@ func FindUser(w http.ResponseWriter, r *http.Request) {
   for row.Next() {
     var user user
 
-    if err != row.Scan(&user.ID, &user.Name, &user.Email); err != nil {
+    if err := row.Scan(&user.ID, &user.Name, &user.Email); err != nil {
       w.Write([]byte("Erro to scan user"))
       return
 
@@ -88,6 +88,10 @@ func FindUser(w http.ResponseWriter, r *http.Request) {
   }
 
   w.WriteHeader(http.StatusOK)
+  if err := json.NewEncoder(w).Encode(users); err != nil {
+    w.Write([]byte("Failure to convert users to json"))
+    return
+  }
 }
-
+// FindUsers by ID
 func FindUserById(w http.ResponseWriter, r *http.Request) {}
