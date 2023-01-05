@@ -13,4 +13,4 @@
 
 ## :computer: Start project
 - If your start with gomodule off, need install modules: go get -u 
-- A second folder in progress
+- To second folder need export GO111MODOULE=on to execute

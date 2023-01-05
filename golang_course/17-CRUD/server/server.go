@@ -173,32 +173,32 @@ func UpdateUser(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusNoContent)
 }
 
-//DeleteUser - delete user data
+// DeleteUser - delete user data
 func DeleteUser(w http.ResponseWriter, r *http.Request) {
-  params := mux.Vars(r)
-  ID,err := strconv.ParseUint(params["id"], 10, 32)
-  if err != nil {
-    w.Write([]byte("Error to convert params for integer"))
-    return
-  }
+	params := mux.Vars(r)
+	ID, err := strconv.ParseUint(params["id"], 10, 32)
+	if err != nil {
+		w.Write([]byte("Error to convert params for integer"))
+		return
+	}
 
-  db, err := db.Connect()
-  if err != nil {
-    w.Write([]byte("Error to connect database"))
-    return 
-  }
-  defer db.Close()
+	db, err := db.Connect()
+	if err != nil {
+		w.Write([]byte("Error to connect database"))
+		return
+	}
+	defer db.Close()
 
-  statement, err := db.Prepare("delete from users where id = ?")
-  if err != nil {
-    w.Write([]byte("Erro to create statement"))
-    return
-  }
-  defer statement.Close()
+	statement, err := db.Prepare("delete from users where id = ?")
+	if err != nil {
+		w.Write([]byte("Erro to create statement"))
+		return
+	}
+	defer statement.Close()
 
-  if _, err := statement.Exec(ID); err != nil {
-    w.Write([]byte("Error to delete user"))
-    return
-  }
-  w.WriteHeader(http.StatusNoContent)
+	if _, err := statement.Exec(ID); err != nil {
+		w.Write([]byte("Error to delete user"))
+		return
+	}
+	w.WriteHeader(http.StatusNoContent)
 }
