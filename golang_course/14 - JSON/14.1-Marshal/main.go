@@ -8,30 +8,30 @@ import (
 )
 
 type Pet struct {
-  Nome string `json:"nome"`
-  Raca string `json:"raca"`
-  Idade uint `json:"idade"`
+	Nome  string `json:"nome"`
+	Raca  string `json:"raca"`
+	Idade uint   `json:"idade"`
 }
 
 func main() {
-  c := Pet{"Ted", "SRD", 6}
+	c := Pet{"Ted", "SRD", 6}
 
-  petJSON, err := json.Marshal(c)
-  if err != nil {
-    log.Fatal(err)
-  }
-  
- fmt.Println(bytes.NewBuffer(petJSON))
+	petJSON, err := json.Marshal(c)
+	if err != nil {
+		log.Fatal(err)
+	}
 
- c2 := map[string] string {
-   "nome": "Bob",
-   "raca": "SRD",
- }
-  pet2JSON, err := json.Marshal(c2)
-  if err != nil {
-    log.Fatal(err)
-  }
+	fmt.Println(bytes.NewBuffer(petJSON))
 
-  fmt.Println(bytes.NewBuffer(pet2JSON))
- 
+	c2 := map[string]string{
+		"nome": "Bob",
+		"raca": "SRD",
+	}
+	pet2JSON, err := json.Marshal(c2)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(bytes.NewBuffer(pet2JSON))
+
 }

@@ -8,7 +8,7 @@ func main() {
 
 	go worker(tarefas, resultados)
 
-for i := 0; i < 45; i++ {
+	for i := 0; i < 45; i++ {
 		tarefas <- i
 	}
 	close(tarefas)
@@ -19,9 +19,9 @@ for i := 0; i < 45; i++ {
 	}
 }
 
-func worker(tarefas <-chan int, resultados chan<- int) { 
-  /*! <-chan define que apenas irá receber os dados
-      chan<- irá enviar os dados */
+func worker(tarefas <-chan int, resultados chan<- int) {
+	/*! <-chan define que apenas irá receber os dados
+	  chan<- irá enviar os dados */
 	for numero := range tarefas {
 		resultados <- fibonacci(numero)
 	}

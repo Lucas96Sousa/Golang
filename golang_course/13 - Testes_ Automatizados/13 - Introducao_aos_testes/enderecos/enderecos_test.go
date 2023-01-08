@@ -1,6 +1,6 @@
 package enderecos_test
 
-import (	
+import (
 	. "intro-testes/enderecos"
 	"testing"
 )
@@ -11,7 +11,7 @@ type cenarioDeTeste struct {
 }
 
 func TestTipoEndereco(t *testing.T) {
-    t.Parallel()
+	t.Parallel()
 
 	cenariosTeste := []cenarioDeTeste{
 		{"Rua ABC", "Rua"},
@@ -35,7 +35,7 @@ func TestTipoEndereco(t *testing.T) {
 	}
 }
 func TestQualquer(t *testing.T) {
-  if 13 > 1 {
-    t.Errorf("Teste Quebrou")
-  }
+	if 13 > 1 {
+		t.Errorf("Teste Quebrou")
+	}
 }

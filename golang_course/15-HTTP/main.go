@@ -6,9 +6,9 @@ import (
 )
 
 func main() {
-  http.HandleFunc("/home",func(w http.ResponseWriter, r *http.Request){
-    w.Write([]byte("Ola"))
-  })
+	http.HandleFunc("/home", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("Ola"))
+	})
 
-  log.Fatal(http.ListenAndServe(":5000", nil))
+	log.Fatal(http.ListenAndServe(":5000", nil))
 }
