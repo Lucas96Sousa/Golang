@@ -6,6 +6,8 @@ name: Go
 on:
   push:
     branches: [ "devbook" ]
+  pull_request: 
+    branches: ["main"]
 jobs:
   run_code_checks:
     runs-on: ubuntu-latest
