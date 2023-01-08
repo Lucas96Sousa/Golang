@@ -6,32 +6,31 @@ import (
 	"log"
 )
 
-
 type pet struct {
-  Nome string `json:"nome"`
-  Raca string `json:"raca"`
-  Idade uint `json:"idade"`
+	Nome  string `json:"nome"`
+	Raca  string `json:"raca"`
+	Idade uint   `json:"idade"`
 }
 
 func main() {
-    petJSON := `{
+	petJSON := `{
       "nome":"Ted",
       "raca":"SRD",
       "idade":6
     }`
-    var c pet
+	var c pet
 
-    if err := json.Unmarshal([]byte(petJSON), &c); err != nil {
-      log.Fatal(err)
-    }
-    fmt.Println(c)
+	if err := json.Unmarshal([]byte(petJSON), &c); err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(c)
 
-    pet2JSON := `{"nome":"Bob","raca":"SRD"}`
+	pet2JSON := `{"nome":"Bob","raca":"SRD"}`
 
-    c2 := make(map[string]string)
+	c2 := make(map[string]string)
 
-    if err := json.Unmarshal([]byte(pet2JSON), &c2); err != nil {
-      log.Fatal(err)
-    }
-    fmt.Println(c2)
+	if err := json.Unmarshal([]byte(pet2JSON), &c2); err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(c2)
 }

@@ -1,13 +1,15 @@
 package controllers
 
 import (
-	"api/src/db"
-	"api/src/models"
-	"api/src/repository"
-	"api/src/responses"
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"strings"
+
+	"api/src/db"
+	"api/src/models"
+	repositories "api/src/repository"
+	"api/src/responses"
 )
 
 // CreateUser -> Insert a new user
@@ -48,7 +50,22 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 // FindUsers -> Find all user in database
 func FindUsers(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Find all users"))
+	nameOrNick := strings.ToLower(r.URL.Query().Get("user"))
+
+	db, err := db.Connect()
+	if err != nil {
+		responses.Err(w, http.StatusInternalServerError, err)
+	}
+	defer db.Close()
+
+	repository := repositories.NewUserRepository(db)
+
+	users, err := repository.Find(nameOrNick)
+	if err != nil {
+		responses.Err(w, http.StatusInternalServerError, err)
+	}
+
+	responses.JSON(w, http.StatusOK, users)
 }
 
 // FindUserbyId -> Find specific user by id

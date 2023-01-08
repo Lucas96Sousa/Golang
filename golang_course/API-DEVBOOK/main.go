@@ -9,9 +9,9 @@ import (
 )
 
 func main() {
-  config.Load()
-  fmt.Printf("Starting server [=======> http://localhost:%d <============]", config.Port)
+	config.Load()
+	fmt.Printf("Starting server [=======> http://localhost:%d <============]", config.Port)
 
 	r := router.Routes()
-  log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Port), r))
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Port), r))
 }
