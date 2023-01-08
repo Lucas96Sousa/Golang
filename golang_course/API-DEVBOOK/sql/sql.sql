@@ -8,7 +8,7 @@ CREATE TABLE users(
   name varchar(50) not null,
   nick varchar(50) not null unique,
   email varchar(50) not null unique,
-  password varchar(30) not null unique,
+  password varchar(100) not null unique,
   createdAt timestamp default current_timestamp()
 )ENGINE=INNODB;
 

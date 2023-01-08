@@ -1,6 +1,7 @@
 package models
 
 import (
+	"api/src/security"
 	"errors"
 	"strings"
 	"time"
@@ -24,7 +25,9 @@ func (user *Users) Prepare(stage string) error {
 		return err
 	}
 
-	user.lint()
+	if err := user.lint(stage); err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -52,8 +55,17 @@ func (user *Users) validate(stage string) error {
 	return nil
 }
 
-func (user *Users) lint() {
+func (user *Users) lint(stage string) error {
 	user.Name = strings.TrimSpace(user.Name)
 	user.Nick = strings.TrimSpace(user.Nick)
 	user.Email = strings.TrimSpace(user.Email)
+
+	if stage == "register" {
+		passwordHash, err := security.Hash(user.Password)
+		if err != nil {
+			return err
+		}
+		user.Password = string(passwordHash)
+	}
+	return nil
 }
