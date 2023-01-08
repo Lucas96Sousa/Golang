@@ -8,6 +8,6 @@ func Hash(password string) ([]byte, error) {
 }
 
 // ComparePassword -> compare database password to hashed
-func ComparePassword(passwordString, passwordHash string) error {
+func ComparePassword(passwordHash, passwordString string) error {
 	return bcrypt.CompareHashAndPassword([]byte(passwordHash), []byte(passwordString))
 }

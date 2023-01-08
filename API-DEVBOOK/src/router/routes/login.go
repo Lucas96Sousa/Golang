@@ -1,10 +1,13 @@
 package routes
 
-import "net/http"
+import (
+	"api/src/controllers"
+	"net/http"
+)
 
 var routeLogin = Route{
 	URI:         "/login",
 	Method:      http.MethodPost,
-	Func:        func(w http.ResponseWriter, r *http.Request) {},
+	Func:        controllers.Login,
 	RequestAuth: false,
 }
