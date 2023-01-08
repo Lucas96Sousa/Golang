@@ -1,8 +1,9 @@
 package routes
 
 import (
-	"api/src/controllers"
 	"net/http"
+
+	"api/src/controllers"
 )
 
 var userRoutes = []Route{
@@ -21,7 +22,7 @@ var userRoutes = []Route{
 	{
 		URI:         "/users/{userId}",
 		Method:      http.MethodGet,
-		Func:        controllers.FindUserbyId,
+		Func:        controllers.FindUserByID,
 		RequestAuth: false,
 	},
 	{

@@ -17,8 +17,8 @@ type Users struct {
 }
 
 // Prepare calls methods validate and lint for users recieved
-func (user *Users) Prepare() error {
-	if err := user.validate(); err != nil {
+func (user *Users) Prepare(stage string) error {
+	if err := user.validate(stage); err != nil {
 		return err
 	}
 
@@ -26,7 +26,7 @@ func (user *Users) Prepare() error {
 	return nil
 }
 
-func (user *Users) validate() error {
+func (user *Users) validate(stage string) error {
 	if user.Name == "" {
 		return errors.New("Name is obrigatory and not empty")
 	}
@@ -39,7 +39,7 @@ func (user *Users) validate() error {
 		return errors.New("Email is obrigatory and not empty")
 	}
 
-	if user.Password == "" {
+	if stage == "register" && user.Password == "" {
 		return errors.New("Password is obrigatory and not empty")
 	}
 
