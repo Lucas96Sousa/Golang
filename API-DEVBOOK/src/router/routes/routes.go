@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+
+	"api/src/middlewares"
 )
 
 // Route represent all routes API
@@ -20,7 +22,12 @@ func Conf(r *mux.Router) *mux.Router {
 	routes = append(routes, routeLogin)
 
 	for _, route := range routes {
-		r.HandleFunc(route.URI, route.Func).Methods(route.Method)
+		if route.RequestAuth {
+			r.HandleFunc(route.URI, middlewares.Logger(middlewares.Authenticate(route.Func))).Methods(route.Method)
+		} else {
+			r.HandleFunc(route.URI, middlewares.Logger(route.Func)).Methods(route.Method)
+		}
+
 	}
 
 	return r

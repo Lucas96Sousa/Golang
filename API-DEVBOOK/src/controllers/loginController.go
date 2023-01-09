@@ -45,5 +45,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	token, _ := auth.CreateToken(userFindDB.ID)
+	if err != nil {
+		responses.Err(w, http.StatusInternalServerError, err)
+		return
+	}
 	w.Write([]byte(token))
 }
