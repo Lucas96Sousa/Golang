@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"api/src/auth"
 	"api/src/db"
 	"api/src/models"
 	repositories "api/src/repository"
@@ -42,5 +43,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 		responses.Err(w, http.StatusUnauthorized, err)
 		return
 	}
-	w.Write([]byte("You are logged"))
+
+	token, _ := auth.CreateToken(userFindDB.ID)
+	w.Write([]byte(token))
 }

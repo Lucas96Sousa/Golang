@@ -15,6 +15,9 @@ var (
 
 	//Port access API
 	Port = 0
+
+	//SecretKey - jwt
+	SecretKey []byte
 )
 
 // Initialize envs
@@ -35,4 +38,6 @@ func Load() {
 		os.Getenv("DB_PASS"),
 		os.Getenv("DB_NAME"),
 	)
+
+	SecretKey = []byte(os.Getenv("SECRET_KEY"))
 }
