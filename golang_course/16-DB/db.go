@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	urlDb := "root:251526@/devbook?charset=utf8&parseTime=True&loc=Local"
+	urlDb := "user:password@/devbook?charset=utf8&parseTime=True&loc=Local"
 	db, err := sql.Open("mysql", urlDb)
 	if err != nil {
 		log.Fatal(err)
